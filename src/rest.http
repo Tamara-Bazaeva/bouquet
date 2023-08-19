@@ -1,0 +1,4 @@
+### flowers
+GET /flowers-shop/products HTTP/1.1
+Host: grading.objects.pages.academy
+Authorization: Basic eo0w590ik2756976a
