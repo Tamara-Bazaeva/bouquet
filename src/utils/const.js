@@ -1,5 +1,14 @@
 const UpdateType = {
-  FLOWERS_LOADED: 'FLOWERS_LOADED',
+  BOUQUETS_LOADED: 'BOUQUETS_LOADED',
+  UPDATE_CARDS: 'UPDATE_CARDS',
+  UPDATE_CARD: 'UPDATE_CARD',
+  NO_RERENDER: 'NO_RERENDER'
+};
+
+const UserAction = {
+  ADDED_TO_FAV: 'ADDED_TO_FAV',
+  REMOVED_FROM_FAV: 'REMOVED_FROM_FAV',
+  ALL_REMOVED_FROM_FAV: 'ALL_REMOVED_FROM_FAV'
 };
 
 const Mode = {
@@ -8,22 +17,33 @@ const Mode = {
 };
 
 const FilterReasonType = {
-  ALL: 'ALL',
-  BIRTHDAY_BOY: 'BIRTHDAY_BOY',
-  FOR_LOVE: 'FOR_LOVE',
-  BRIDGE: 'BRIDGE',
-  COLLEAGUES: 'COLLEAGUES',
-  MOTHERDAY: 'MOTHERDAY'
+  BIRTHDAY: 'birthdayboy',
+  DARLING: 'forlove',
+  BRIDE: 'bridge',
+  COLLEAGUE: 'colleagues',
+  MOTHERDAY: 'motherday'
 };
 
 const FilterColorType = {
-  ALL: 'ALL',
-  RED: 'RED',
-  WHITE: 'WHITE',
-  PINK: 'PINK',
-  YELLOW: 'YELLOW',
-  VIOLET: 'VIOLET'
+  RED: 'red',
+  WHITE: 'white',
+  LILAC: 'lilac',
+  YELLOW: 'yellow',
+  PINK: 'pink'
 };
 
-export {UpdateType, Mode, FilterReasonType, FilterColorType};
+const SortType = {
+  PRICE_ASC: 'PRICE_ASC',
+  PRICE_DESC: 'PRICE_DESC'
+};
+
+const I18N_RU = {
+  'birthdayboy': 'именнинику',
+  'forlove': 'любимой',
+  'bridge': 'невесте',
+  'colleagues': 'коллеге',
+  'motherday': 'маме'
+};
+
+export { UpdateType, Mode, FilterReasonType, FilterColorType, SortType, UserAction, I18N_RU };
 

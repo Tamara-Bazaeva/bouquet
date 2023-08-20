@@ -1,10 +1,18 @@
 import AbstractStatefulView from '../framework/view/abstract-stateful-view.js';
+import { I18N_RU } from '../utils/const.js';
 
-function cardTemplate(flower) {
+const MAX_DESCRIPTION_LENGTH = 140;
+
+function cardTemplate(bouquet) {
+  let description = bouquet.description;
+  if (bouquet.description.length > MAX_DESCRIPTION_LENGTH) {
+    description = `${description.substring(MAX_DESCRIPTION_LENGTH - 1)}...`;
+  }
+
   return `<li class="catalogue__item">
-<div class="item-card">
+<div class="item-card ${bouquet.inCart === 0 ? '' : 'is-favorite'}">
   <button class="item-card__btn" type="button" data-open-modal="product-card" aria-label="посмотреть товар"></button>
-  <p class="item-card__label">${flower.type}</p>
+  <p class="item-card__label">${I18N_RU[bouquet.type]}</p>
   <div class="item-card__img-wrap">
     <button class="button-heart item-card__to-fav-btn" type="button" aria-label="добавить в избранное">
       <svg class="button-heart__icon" width="75" height="75" aria-hidden="true" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14,28 +22,57 @@ function cardTemplate(flower) {
       </svg>
     </button>
     <picture>
-      <source type="image/webp" srcset="img/content/items/item-delicate-irises.webp, img/content/items/item-delicate-irises@2x.webp 2x"><img src=${flower.previewImage} srcset="img/content/items/item-delicate-irises@2x.png 2x" width="244" height="412" alt="item-delicate-irises">
+      <img src=${bouquet.previewImage} width="244" height="412">
     </picture>
   </div>
   <div class="item-card__desc-wrap">
-    <h3 class="title title--h4 item-card__title">${flower.title}</h3>
-    <div class="item-card__price-wrap"><b class="item-card__formatted-price">${flower.price}</b><span class="item-card__currency">р</span></div>
+    <h3 class="title title--h4 item-card__title">${bouquet.title}</h3>
+    <div class="item-card__price-wrap"><b class="item-card__formatted-price">${bouquet.price}</b><span class="item-card__currency">р</span></div>
   </div>
-  <p class="text text--size-20 item-card__desc">${flower.description}</p>
+  <p class="text text--size-20 item-card__desc">${description}</p>
 </div>
 </li>`;
 
 }
 
 export default class CardView extends AbstractStatefulView {
-  #flower = null;
+  #handleFavoriteClick = null;
+  #handlePopupClick = null;
 
-  constructor({flower}) {
+  constructor({ bouquet, onPopupClick, onFavoriteClick }) {
     super();
-    this.#flower = flower;
+    this._setState({
+      ...bouquet
+    });
+    this.#handleFavoriteClick = onFavoriteClick;
+    this.#handlePopupClick = onPopupClick;
+    this._restoreHandlers();
+  }
+
+  _restoreHandlers() {
+    this.element.querySelector('.item-card__to-fav-btn').addEventListener('click', (evt) => {
+      evt.stopPropagation();
+      const addedToFavorite = this._state.inCart === 0;
+      const newState = {
+        ...this._state,
+        inCart: addedToFavorite ? 1 : 0
+      };
+      this.#handleFavoriteClick(addedToFavorite, newState).then((success) => {
+        if (success) {
+          this.updateElement(newState);
+        } else {
+          this.shake(() => {});
+        }
+      });
+    });
+    this.element.addEventListener('click', (evt) => {
+      evt.stopPropagation();
+      this.#handlePopupClick();
+    });
   }
 
   get template() {
-    return cardTemplate(this.#flower);
+    return cardTemplate(this._state);
   }
+
 }

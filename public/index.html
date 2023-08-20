@@ -48,6 +48,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/style.min.css" />
+    <link rel="stylesheet" href="css/custom.css" />
   </head>
   <body>
     <div class="visually-hidden">
@@ -284,24 +285,7 @@
               <h1 class="title title--header">Букетик</h1>
             </div>
             <div class="header__container">
-              <div class="header-count">
-                <button class="header-count__btn" type="button">
-                  <svg width="60" height="47" aria-hidden="true">
-                    <use xlink:href="#icon-heart-header"></use>
-                  </svg>
-                  <span class="visually-hidden">закрыть</span>
-                </button>
-                <div class="header-count__count">
-                  <p class="text text--size-20 header-count__counter">4</p>
-                </div>
-                <div class="header-count__block">
-                  <p class="text text--size-20 header-count__text">сумма</p>
-                  <b class="price price--size-min header-count__price">
-                    15 700
-                    <span>Р</span>
-                  </b>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -309,41 +293,85 @@
 
       <main>
         <!-- Содержимое страницы -->
-
-        <div class="catalogue" data-items="catalogue">
+        <section class="hero">
+          <div class="hero__wrapper">
+            <div class="hero__background">
+              <picture>
+                <source type="image/webp" srcset="img/content/hero-back.webp, img/content/hero-back@2x.webp 2x"><img src="img/content/hero-back.jpg" srcset="img/content/hero-back@2x.jpg 2x" width="1770" height="601" alt="фоновая картинка">
+              </picture>
+            </div>
+            <div class="hero__content">
+              <h2 class="title title--h1">Букеты<br>для<br>самых близких</h2>
+              <a class="btn btn--with-icon btn--hero" href="#filters-anchor">выбрать
+                <svg width="61" height="22" aria-hidden="true">
+                  <use xlink:href="#icon-arrow"></use>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </section>
+        <section class="mission">
           <div class="container">
-            <div class="catalogue__header">
-              <h2 class="title title--h3 catalogue__title">Каталог</h2>
-              <div class="catalogue__sorting">
-                <div class="sorting-price">
-                  <h3 class="title sorting-price__title">Цена</h3><a class="sorting-price__link sorting-price__link--incr sorting-price__link--active" href="#" aria-label="сортировка по возрастанию цены">
-                    <svg class="sorting-price__icon" width="50" height="46" aria-hidden="true">
-                      <use xlink:href="#icon-increase-sort"></use>
-                    </svg></a><a class="sorting-price__link" href="#" aria-label="сортировка по убыванию цены">
-                    <svg class="sorting-price__icon" width="50" height="46" aria-hidden="true">
-                      <use xlink:href="#icon-descending-sort"></use>
-                    </svg></a>
+            <div class="mission__wrapper">
+              <h2 class="title title--h3">Наша миссия</h2>
+              <div class="mission__content">
+                <div class="mission__quote">
+                  <p class="text text--quote">Для наших букетов мы отбираем самые свежие и&nbsp;яркие цветы со&nbsp; всего мира. Правильные условия хранения подарят вашим близким множество дней радости.</p>
+                </div>
+                <div class="mission__img">
+                  <picture>
+                    <source type="image/webp" srcset="img/content/mission.webp, img/content/mission@2x.webp 2x"><img src="img/content/mission.png" srcset="img/content/mission@2x.png 2x" width="623" height="623" alt="букет">
+                  </picture>
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+        <section class="advantages">
+          <div class="container">
+            <div class="advantages__wrapper">
+              <div class="advantages__img">
+                <picture>
+                  <source type="image/webp" srcset="img/content/flor-saurina.webp, img/content/flor-saurina@2x.webp 2x"><img src="img/content/flor-saurina.png" srcset="img/content/flor-saurina@2x.png 2x" width="1044" height="810" alt="букет">
+                </picture>
+              </div>
+              <div class="advantages__content"></div>
+              <h2 class="title title--h3">Почему мы</h2>
+              <ul class="advantages-list">
+                <li class="advantages-list__item">
+                  <p>доставка<br>за&nbsp;1&nbsp;час</p>
+                  <svg width="122" height="82" aria-hidden="true">
+                    <use xlink:href="#icon-delivery"></use>
+                  </svg>
+                </li>
+                <li class="advantages-list__item">
+                  <p>индивидуальный<br>подход</p>
+                  <svg width="66" height="82" aria-hidden="true">
+                    <use xlink:href="#icon-men"></use>
+                  </svg>
+                </li>
+                <li class="advantages-list__item">
+                  <p>приятные<br>цены</p>
+                  <svg width="85" height="83" aria-hidden="true">
+                    <use xlink:href="#icon-like"></use>
+                  </svg>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <div id="filters-anchor" class="catalogue" data-items="catalogue">
+          <div id="sorting-anchor" class="container">
             <ul class="catalogue__list">
             </ul>
-            <div class="catalogue__btn-wrap">
-              <button class="btn btn--outlined catalogue__show-more-btn" type="button">больше букетов
-              </button>
-              <button class="btn-round btn-round--to-top btn-round--size-small catalogue__to-top-btn" type="button" aria-label="наверх">
-                <svg width="80" height="85" aria-hidden="true" focusable="false">
-                  <use xlink:href="#icon-round-button"></use>
-                </svg>
-              </button>
-            </div>
           </div>
         </div>
 
         <!-- Пример контрола для открытия попапа -->
-        <button class="element-which-is-open-popup">
+        <!-- <button class="element-which-is-open-popup">
           Клик, чтобы открыть попап
-        </button>
+        </button> -->
       </main>
 
       <!-- Экран с отложенными букетами -->
@@ -410,7 +438,7 @@
       <div class="modal__wrapper">
         <div class="modal__overlay" data-close-modal></div>
         <div class="modal__content">
-          <div class="modal-product">
+          <!-- <div class="modal-product">
             <button
               class="btn-close modal-product__btn-close"
               type="button"
@@ -429,8 +457,9 @@
             >
               <use xlink:href="#icon-loader"></use>
             </svg>
-            <!-- Содержимое попапа -->
-          </div>
+            Содержимое попапа
+
+          </div> -->
         </div>
       </div>
     </div>
