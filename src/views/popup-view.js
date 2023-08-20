@@ -15,7 +15,7 @@ function popupTemplate(bouquet) {
       ${bouquet.images.map((img) => `<div class="image-slides-list__item swiper-slide">
       <div class="image-slide">
         <picture>
-          <img src="${img}" width="1274" height="1789" alt="">
+          <img src="${img}" style="max-width: 100%; max-height: 100%" width="1274" height="1789" alt="">
         </picture><span class="image-author image-slide__author">Автор  фотографии:  «${bouquet.authorPhoto}»</span>
       </div>
     </div>`).join('')}

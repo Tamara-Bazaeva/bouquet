@@ -7,7 +7,7 @@ function cartTemplate(state) {
         <div class="deferred-card ${b.loading ? 'is-loading' : ''}">
         <div class="deferred-card__img">
             <picture>
-            <img src="${b.previewImage}" width="233" height="393" alt="букет">
+            <img src="${b.previewImage}" style="max-width: 100%; max-height: 100%" width="233" height="393" alt="букет">
             </picture>
         </div>
         <div class="deferred-card__content">

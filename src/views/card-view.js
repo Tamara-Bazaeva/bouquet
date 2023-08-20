@@ -22,7 +22,7 @@ function cardTemplate(bouquet) {
       </svg>
     </button>
     <picture>
-      <img src=${bouquet.previewImage} width="244" height="412">
+      <img src=${bouquet.previewImage} style="max-width: 100%; max-height: 100%" width="244" height="412">
     </picture>
   </div>
   <div class="item-card__desc-wrap">
